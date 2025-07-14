@@ -1,8 +1,8 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f3e5f5; /* lila pastel */
+  background-color: #f3e5f5; 
   padding: 2rem;
-  color: #4a148c; /* púrpura oscuro */
+  color: #4a148c;
 }
 
 h1 {
@@ -18,7 +18,7 @@ h1 {
 }
 
 .semestre {
-  background-color: #ede7f6; /* lavanda claro */
+  background-color: #ede7f6; 
   border-radius: 1rem;
   box-shadow: 0 0 12px rgba(155, 89, 182, 0.2);
   padding: 1rem;
