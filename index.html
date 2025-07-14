@@ -3,13 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malla Curricular Interactiva</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Malla Curricular - Ingeniería Comercial</title>
+  <link rel="stylesheet" href="https://rociocerpa.github.io/malla-obstetricia/style.css">
 </head>
 <body>
-  <h1>Malla Curricular - Ingeniería Comercial</h1>
-  <div id="semestres"></div>
+  <header>
+    <h1>Malla Curricular de Ingeniería Comercial</h1>
+  </header>
+  <main id="malla"></main>
 
-  <script src="script.js"></script>
+  <script src="https://rociocerpa.github.io/malla-obstetricia/script.js"></script>
+  <script>
+    const malla = [
+      {
+        semestre: 1,
+        materias: [
+          { codigo: "ADM100", nombre: "Administración I", prerequisitos: [] },
+          { codigo: "CJS100", nombre: "Administración Tributaria", prerequisitos: [] },
+          { codigo: "CPA100", nombre: "Contabilidad I", prerequisitos: [] },
+          { codigo: "ECO100", nombre: "Introducción a la Economía", prerequisitos: [] },
+          { codigo: "INV100", nombre: "Introducción a la Investigación", prerequisitos: [] },
+          { codigo: "MAT100", nombre: "Cálculo I", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 2,
+        materias: [
+          { codigo: "ADM150", nombre: "Administración II", prerequisitos: ["ADM100"] },
+          { codigo: "CPA150", nombre: "Contabilidad II", prerequisitos: ["CPA100"] },
+          { codigo: "ECO150", nombre: "Microeconomía I", prerequisitos: ["ECO100"] },
+          { codigo: "MAT150", nombre: "Cálculo II", prerequisitos: ["MAT100"] },
+          { codigo: "PSI150", nombre: "Psicología Social e Industrial", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 3,
+        materias: [
+          { codigo: "ORG200", nombre: "Organización y Métodos", prerequisitos: ["ADM150"] },
+          { codigo: "CPA200", nombre: "Contabilidad III", prerequisitos: ["CPA150"] },
+          { codigo: "ECO200", nombre: "Microeconomía II", prerequisitos: ["ECO150"] },
+          { codigo: "MAT200", nombre: "Álgebra Lineal", prerequisitos: ["MAT150"] },
+          { codigo: "EST200", nombre: "Estadística I", prerequisitos: ["MAT100"] },
+          { codigo: "ECO250", nombre: "Macroeconomía I", prerequisitos: ["ECO100"] }
+        ]
+      },
+      {
+        semestre: 4,
+        materias: [
+          { codigo: "IOP250", nombre: "Investigación Operativa I", prerequisitos: ["MAT200"] },
+          { codigo: "COS250", nombre: "Contabilidad de Costos", prerequisitos: ["CPA200"] },
+          { codigo: "ECO300", nombre: "Macroeconomía II", prerequisitos: ["ECO250"] },
+          { codigo: "EST250", nombre: "Estadística II", prerequisitos: ["EST200"] },
+          { codigo: "LEG250", nombre: "Legislación Empresarial", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 5,
+        materias: [
+          { codigo: "IOP300", nombre: "Investigación Operativa II", prerequisitos: ["IOP250"] },
+          { codigo: "FIN300", nombre: "Finanzas I", prerequisitos: ["COS250"] },
+          { codigo: "COM300", nombre: "Comercio Exterior I", prerequisitos: [] },
+          { codigo: "MKT300", nombre: "Investigación de Mercados", prerequisitos: ["EST250"] },
+          { codigo: "SOC300", nombre: "Sociología Empresarial", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 6,
+        materias: [
+          { codigo: "FIN350", nombre: "Finanzas II", prerequisitos: ["FIN300"] },
+          { codigo: "COM350", nombre: "Comercio Exterior II", prerequisitos: ["COM300"] },
+          { codigo: "MKT350", nombre: "Marketing I", prerequisitos: ["MKT300"] },
+          { codigo: "EVP350", nombre: "Evaluación de Proyectos I", prerequisitos: [] },
+          { codigo: "RRHH350", nombre: "Administración de Recursos Humanos", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 7,
+        materias: [
+          { codigo: "EVP400", nombre: "Evaluación de Proyectos II", prerequisitos: ["EVP350"] },
+          { codigo: "AUD400", nombre: "Auditoría I", prerequisitos: ["COS250"] },
+          { codigo: "MKT400", nombre: "Marketing II", prerequisitos: ["MKT350"] },
+          { codigo: "GER400", nombre: "Gerencia Estratégica", prerequisitos: ["FIN350", "MKT350"] },
+          { codigo: "PRA400", nombre: "Práctica Empresarial I", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 8,
+        materias: [
+          { codigo: "AUD450", nombre: "Auditoría II", prerequisitos: ["AUD400"] },
+          { codigo: "PRA450", nombre: "Práctica Empresarial II", prerequisitos: ["PRA400"] },
+          { codigo: "MET450", nombre: "Metodología de la Investigación", prerequisitos: [] },
+          { codigo: "DORG450", nombre: "Desarrollo Organizacional", prerequisitos: [] },
+          { codigo: "PLAN450", nombre: "Plan de Negocios", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 9,
+        materias: [
+          { codigo: "TES500", nombre: "Seminario de Tesis I", prerequisitos: ["MET450"] },
+          { codigo: "PROD500", nombre: "Administración de la Producción", prerequisitos: [] },
+          { codigo: "COMP500", nombre: "Comportamiento Organizacional", prerequisitos: [] },
+          { codigo: "ESTG500", nombre: "Administración Estratégica", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: 10,
+        materias: [
+          { codigo: "TES550", nombre: "Seminario de Tesis II", prerequisitos: ["TES500"] },
+          { codigo: "PRAC550", nombre: "Práctica Profesional Supervisada", prerequisitos: [] }
+        ]
+      },
+      {
+        semestre: "Optativas",
+        materias: [
+          { codigo: "OP01", nombre: "Teoría de las Negociaciones", prerequisitos: [] },
+          { codigo: "OP02", nombre: "Bases Creativas", prerequisitos: [] },
+          { codigo: "OP03", nombre: "Inglés Técnico I", prerequisitos: [] },
+          { codigo: "OP04", nombre: "Inglés Técnico II", prerequisitos: ["OP03"] },
+          { codigo: "OP05", nombre: "Gestión de Innovación Técnica", prerequisitos: [] },
+          { codigo: "OP06", nombre: "Ética Profesional", prerequisitos: [] },
+          { codigo: "OP07", nombre: "Administración del Trabajo", prerequisitos: [] },
+          { codigo: "OP08", nombre: "Introducción a la Computación", prerequisitos: [] },
+          { codigo: "OP09", nombre: "Operación de Computadoras", prerequisitos: ["OP08"] },
+          { codigo: "OP10", nombre: "Gestión de Ventas", prerequisitos: [] },
+          { codigo: "OP11", nombre: "Comercio Internacional", prerequisitos: [] },
+          { codigo: "OP12", nombre: "Publicidad y Promoción", prerequisitos: [] },
+          { codigo: "OP13", nombre: "Administración Municipal", prerequisitos: [] },
+          { codigo: "OP14", nombre: "Problemática Económica y Social", prerequisitos: [] }
+        ]
+      }
+    ];
+
+    // Guardado automático con localStorage
+    function guardarProgreso() {
+      const checkboxes = document.querySelectorAll("input[type='checkbox']");
+      const estado = {};
+      checkboxes.forEach(cb => {
+        estado[cb.id] = cb.checked;
+      });
+      localStorage.setItem("progresoMalla", JSON.stringify(estado));
+    }
+
+    function cargarProgreso() {
+      const estadoGuardado = JSON.parse(localStorage.getItem("progresoMalla") || "{}");
+      Object.keys(estadoGuardado).forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb) {
+          cb.checked = estadoGuardado[id];
+          cb.dispatchEvent(new Event("change"));
+        }
+      });
+    }
+
+    window.onload = () => {
+      crearMalla(malla);
+      setTimeout(() => {
+        cargarProgreso();
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(cb => {
+          cb.addEventListener("change", guardarProgreso);
+        });
+      }, 100);
+    };
+  </script>
 </body>
 </html>
