@@ -1,5 +1,4 @@
 const materias = {
-  const materias = {
   "ADM100": { nombre: "Administración 1", semestre: 1, prerreq: [] },
   "CJS100": { nombre: "Administración tributaria", semestre: 1, prerreq: [] },
   "CPA100": { nombre: "Contabilidad 1", semestre: 1, prerreq: [] },
@@ -56,8 +55,7 @@ const materias = {
   "GDI550": { nombre: "Graduación directa", semestre: 10, prerreq: ['COM500', 'COM520', 'COM540'] }
 };
 
-
-// 🧠 Cargar estado guardado si existe
+// 🧠 Cargar progreso guardado
 let estadoMaterias = JSON.parse(localStorage.getItem("estadoMaterias")) || {};
 
 function renderMalla() {
@@ -66,7 +64,6 @@ function renderMalla() {
 
   const semestres = {};
 
-  // Agrupar por semestre
   for (const cod in materias) {
     const mat = materias[cod];
     if (!semestres[mat.semestre]) semestres[mat.semestre] = [];
@@ -93,7 +90,6 @@ function renderMalla() {
 
       check.addEventListener("change", () => {
         estadoMaterias[mat.cod] = check.checked;
-        // 💾 Guardar en localStorage
         localStorage.setItem("estadoMaterias", JSON.stringify(estadoMaterias));
         renderMalla();
       });
